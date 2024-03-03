@@ -1,0 +1,30 @@
+.movieCardContainer {
+    width: 20%;
+    position: relative;
+    margin-bottom: 10px;
+    font-family: "Arial Black", sans-serif;
+}
+
+.movieCardContainer a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.movieCardContainerWhite {
+    width: 20%;
+    position: relative;
+    margin-bottom: 10px;
+    font-family: "Arial Black", sans-serif;
+}
+
+.movieCardContainerWhite a {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+.titleMovie {
+    margin: 5px 0;
+}
+

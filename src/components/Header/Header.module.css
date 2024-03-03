@@ -1,0 +1,60 @@
+.headerContainerDark {
+    height: 80px;
+    background-color: #10161d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Arial Black", sans-serif;
+}
+
+.headerContainerLight {
+    height: 80px;
+    background-color: #f7d13c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Arial Black", sans-serif;
+}
+
+.headerContainerDark h1, .headerContainerLight h1 {
+    color: #f7d13c;
+    font-size: 40px;
+    margin: 0 50px;
+    cursor: pointer;
+}
+
+.headerContainerLight h1 {
+    color: black;
+}
+
+.navBoxBlack, .navBoxWhite {
+    display: flex;
+    box-sizing: border-box;
+    width: 80%;
+}
+
+.navBoxBlack a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    font-family: "Arial Black", sans-serif;
+    margin-right: 15px;
+}
+
+.navBoxWhite a {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-family: "Arial Black", sans-serif;
+    margin-right: 15px;
+}
+
+.userIcon img {
+    width: 50px;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.switch  span:nth-child(2) {
+    border: 2px solid white;
+}

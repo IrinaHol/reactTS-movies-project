@@ -1,0 +1,20 @@
+.posterPreview {
+    text-align: center;
+    position: relative;
+}
+
+.posterPreview img {
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 8px 20px;
+}
+
+.titleMovie{
+    position: absolute;
+    opacity: 1;
+}
+
+.titleMovie:hover {
+    overflow: visible;
+    opacity: 1;
+}

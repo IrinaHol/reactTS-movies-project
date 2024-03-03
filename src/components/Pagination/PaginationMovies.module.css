@@ -1,0 +1,51 @@
+.paginationDark {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.paginationDark li button {
+    background-color: snow;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-family: "Arial Black", sans-serif;
+    border: 1px solid snow;
+}
+
+.paginationDark li button:hover {
+    background-color: #f7d13c;
+    border: 1px solid #f7d13c;
+}
+
+.paginationDark li div {
+    font-size: 30px;
+    color: white;
+}
+
+.paginationLight {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.paginationLight li button {
+    background-color: #10161d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-family: "Arial Black", sans-serif;
+    color: white;
+    border: 1px solid #10161d;
+}
+
+.paginationLight li button:hover {
+    background-color: #f7d13c;
+    border: 1px solid #f7d13c;
+}
+
+.paginationLight li div {
+    font-size: 30px;
+    color: #10161d;
+}
+

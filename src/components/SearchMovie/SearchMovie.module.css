@@ -1,0 +1,16 @@
+.searchContainer input {
+    width: 200px;
+    height: 30px;
+    font-family: "Arial Black", sans-serif;
+    background: url("../../images/icons8-search.gif") no-repeat left 6px center white;
+    background-size: 23px;
+    padding-left: 35px;
+    border-radius: 9px;
+    border: 1px solid black;
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s !important;
+}

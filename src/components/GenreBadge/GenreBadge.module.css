@@ -1,0 +1,23 @@
+.genreContainer {
+    display: flex;
+    padding: 20px 150px;
+    flex-wrap: wrap;
+    background-color: #f7d13c;
+    width: 100%;
+}
+
+.navGenreBox {
+    width: 22%;
+    height: 50px;
+    font-size: 20px;
+    font-family: "Arial Black", sans-serif;
+}
+
+.navGenreBox a {
+    text-decoration: none;
+    color: #10161d;
+}
+
+.titleGenre {
+    margin-top: 7px;
+}
