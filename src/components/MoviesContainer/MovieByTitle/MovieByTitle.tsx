@@ -51,6 +51,7 @@ const MovieByTitle = () => {
                 <div className={css.btnBack}>
                     <button onClick={() => navigate(-1)}>BACK</button>
                 </div>
+                {!moviesByTitle.total_results ? <div className={css.notFound}><h2>There is no movie</h2></div>  :
                 <div className={css.moviesContainer}>{moviesByTitle.results.map(movieByTitle => <MovieCard
                     key={movieByTitle.id} id={movieByTitle.id} poster_path={movieByTitle.poster_path}
                     title={movieByTitle.title} rating={movieByTitle.vote_average} state={movieByTitle}/>)}
@@ -58,6 +59,7 @@ const MovieByTitle = () => {
                         count={moviesByTitle?.total_pages <= 500 ? moviesByTitle?.total_pages : 500} page={+page}
                         onChange={handleChange}/></div>
                 </div>
+                }
             </div>
         }</div>
     );

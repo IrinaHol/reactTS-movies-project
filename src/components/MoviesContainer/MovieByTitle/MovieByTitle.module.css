@@ -42,3 +42,13 @@
 .mainContainerLight .btnBack {
     background-color: snow;
 }
+
+.notFound {
+    background-color: #f7d13c;
+    font-family: "Arial Black", sans-serif;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
