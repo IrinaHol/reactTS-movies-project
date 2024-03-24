@@ -1,9 +1,8 @@
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import {Pagination, Stack} from '@mui/material';
 import {FC} from "react";
 
 import css from './PaginationMovies.module.css';
-import {useAppContext} from "../../hooks";
+import {useAppSelector} from "../../hooks";
 
 interface IProps {
     page: number,
@@ -12,12 +11,19 @@ interface IProps {
 }
 
 const PaginationMovies: FC<IProps> = ({page, onChange, count}) => {
-    const {theme,} = useAppContext();
+    const {theme} = useAppSelector(state => state.theme);
+
     return (
         <div className={theme ? css.paginationLight : css.paginationDark}>
             <Stack spacing={2}>
-                <Pagination count={count} page={page} onChange={onChange}
-                            variant="outlined" size="large" color="standard"/>
+                <Pagination
+                    className={css.muiSelected}
+                    count={count}
+                    page={page}
+                    onChange={onChange}
+                    variant="outlined"
+                    size="large"
+                />
             </Stack>
         </div>
     );

@@ -1,9 +1,9 @@
-import {GenreBadge} from "../../components/GenreBadge";
+import {Genres} from "../../components/GenresContainer";
 
 const GenrePage = () => {
     return (
         <div>
-            <GenreBadge/>
+            <Genres/>
         </div>
     );
 };

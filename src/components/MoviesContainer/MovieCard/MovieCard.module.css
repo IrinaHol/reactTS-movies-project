@@ -26,5 +26,8 @@
 
 .titleMovie {
     margin: 5px 0;
+    height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 

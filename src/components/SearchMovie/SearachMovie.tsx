@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 
 import {ISearch} from "../../interfaces";
 import css from './SearchMovie.module.css';
+import {TextField} from '@mui/material';
 
 
 const SearchMovie = () => {
@@ -24,7 +25,13 @@ const SearchMovie = () => {
     return (
         <div className={css.searchContainer}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register('search')} className={'input'} placeholder={'Find movie...'}/>
+                <TextField
+                    label="Find movie..."
+                    type="search"
+                    autoComplete="search"
+                    variant="outlined"
+                    {...register('search')}
+                />
             </form>
         </div>
     );

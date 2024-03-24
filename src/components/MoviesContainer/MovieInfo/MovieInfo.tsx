@@ -1,40 +1,46 @@
-import {FC} from "react";
-import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 
-import {IMovie} from "../../../interfaces";
 import {PosterPreview} from "../../PosterPreview";
 import {StarsRating} from "../../StarsRating";
 import css from './MovieInfo.module.css'
-import {useAppContext} from "../../../hooks";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {Loading} from "../../Loading";
+import {movieActions} from "../../../redux";
 
-interface IProps {
-    movieInfo: IMovie
-}
 
-const MovieInfo: FC<IProps> = ({movieInfo}) => {
-    const {title, release_date, overview, poster_path, genres, vote_average} = movieInfo;
+const MovieInfo = () => {
+    const {movie} = useAppSelector(state => state.movies);
+    const {isLoading, errors} = useAppSelector(state => state.loading);
+    const {theme} = useAppSelector(state => state.theme);
 
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const {theme,} = useAppContext();
+    const {id} = useParams();
+
+    useEffect(() => {
+        dispatch(movieActions.getMovieById({id: +id}))
+    }, [id, dispatch]);
 
     return (
         <div>
-
             <section className={theme ? css.movieInfoContainerLight : css.movieInfoContainerDark}>
                 <div className={css.btnBack}>
                     <button onClick={() => navigate(-1)}>BACK</button>
                 </div>
+                {isLoading && <Loading/>}
+                {errors && <h1>{errors.status_message} Something went wrong!</h1>}
                 <div className={css.movieInfoBox}>
-                    <div className={css.poster}><PosterPreview poster_path={poster_path} title={title}/></div>
+                    <div className={css.poster}><PosterPreview poster_path={movie?.poster_path} title={movie?.title}/>
+                    </div>
                     <div className={css.movieInfo}>
-                        <h1>{title}</h1>
-                        <p><span>Release date: </span> {release_date}</p>
+                        <h1>{movie?.title}</h1>
+                        <p><span>Release date: </span> {movie?.release_date}</p>
                         <span>Rating: </span>
-                        <StarsRating rating={vote_average}/>
+                        <StarsRating rating={movie?.vote_average}/>
                         <p><span>Genres: </span></p>
-                        <ul>{genres.map(genre => <li onClick={() => navigate(`/moviesByGenre/${genre.id}`)}
-                                                     key={genre.id}> {genre.name}</li>)}</ul>
-                        <p><span>Overview: </span>{overview}</p>
+                        <ul>{movie?.genres?.map(genre => <li key={genre.id} onClick={() => navigate(`/moviesByGenre/${genre.id}`)}>{genre.name}</li>)}</ul>
+                        <p><span>Overview: </span>{movie?.overview}</p>
                     </div>
                 </div>
             </section>

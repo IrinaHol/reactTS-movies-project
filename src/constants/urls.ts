@@ -15,8 +15,7 @@ const urls = {
     genres: {
         base: genre,
         byGenre: (id:number): string => `${moviesByGenre}?with_genres=${id}`
-    },
-
+    }
 }
 
 export {

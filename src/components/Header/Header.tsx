@@ -1,27 +1,44 @@
-import React from "react";
-import {NavLink, useNavigate} from "react-router-dom";
+import React, {useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
 import Switch from '@mui/material/Switch';
 
 import {SearchMovie} from "../SearchMovie";
 import css from './Header.module.css'
 import userIcon from '../../images/icons8-user-64.png';
 import userIconBlack from '../../images/icons7-user-64.png';
-import {useAppContext} from "../../hooks";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {themeActions} from "../../redux";
 
 const Header = () => {
+    const dispatch = useAppDispatch();
+    const {theme} = useAppSelector(state => state.theme);
     const navigate = useNavigate();
-    const {theme, setTheme} = useAppContext();
+    const {pathname} = useLocation();
+    console.log(pathname)
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setTheme(event.target.checked);
+    const handleChange = (): void => {
+        dispatch(themeActions.setTrigger());
     };
 
+    const [flag, setFlag] = useState(true)
+    const btnClick = () => {
+        if (!!flag){
+            navigate('movies/genres')
+            setFlag(prevState => !prevState)
+            return flag
+        }
+        else {
+            navigate('movies')
+            setFlag(prevState => !prevState)
+            return flag
+        }
+    }
     return (
         <header className={theme ? css.headerContainerLight : css.headerContainerDark}>
             <h1 onClick={() => navigate('movies')}>MovieDB</h1>
             <nav className={theme ? css.navBoxWhite : css.navBoxBlack}>
-                <NavLink to={'movies'}>Movies</NavLink>
-                <NavLink to={'movies/genres'}>Genres</NavLink>
+                <button onClick={()=> navigate('movies')}>Movies</button>
+                <button onClick={btnClick}>Genres</button>
                 <SearchMovie/>
             </nav>
             <div className={css.switch}>
@@ -37,6 +54,6 @@ const Header = () => {
             </div>
         </header>
     );
-};
+}
 
 export {Header};

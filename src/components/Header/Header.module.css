@@ -33,17 +33,20 @@
     width: 80%;
 }
 
-.navBoxBlack a {
+.navBoxBlack button, .navBoxWhite button {
     text-decoration: none;
     color: white;
     font-size: 25px;
     font-family: "Arial Black", sans-serif;
     margin-right: 15px;
+    background-color: unset;
+    border: none;
+    cursor: pointer;
 }
 
-.navBoxWhite a {
+.navBoxBlack a, .navBoxWhite a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 25px;
     font-family: "Arial Black", sans-serif;
     margin-right: 15px;

@@ -1,6 +1,7 @@
 export interface IMovie {
     id: number,
     genres: [{id: number, name: string}],
+    genre_ids: [],
     original_title: string,
     overview: string,
     popularity: number,
