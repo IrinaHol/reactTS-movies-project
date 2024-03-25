@@ -10,6 +10,7 @@ interface IProps {
     genre: IGenre
 }
 
+
 const Genre: FC<IProps> = ({genre}) => {
     const {id, name} = genre;
     const [movieCount, setMovieCount] = useState(0);
@@ -22,10 +23,12 @@ const Genre: FC<IProps> = ({genre}) => {
             })
     }, [id]);
 
+
     return (
         <div>
             <NavLink to={`/moviesByGenre/${id}`}>
-                <Stack spacing={6} direction="row"><Badge color="secondary" badgeContent={movieCount} max={1000000}> <span
+                <Stack spacing={6} direction="row"><Badge color="secondary" badgeContent={movieCount}
+                                                          max={1000000}> <span
                     className={css.titleGenre}>{name} </span></Badge></Stack>
             </NavLink>
         </div>

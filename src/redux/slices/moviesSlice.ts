@@ -7,15 +7,13 @@ import {genreService, movieService} from "../../services";
 interface IState {
     movies: IData<IMovie[]>,
     genres: IGenres<IGenre[]>,
-    movie: IMovie,
-    movieCountByGenres: number
+    movie: IMovie
 }
 
 const initialState: IState = {
     movies: null,
     genres: null,
-    movie: null,
-    movieCountByGenres: 0
+    movie: null
 }
 
 const getAll = createAsyncThunk<IData<IMovie[]>, { page: string }>(
@@ -84,20 +82,6 @@ const getMovieById = createAsyncThunk<IMovie, { id: number }>(
     }
 )
 
-const getMovieByCountGenre = createAsyncThunk<IData<IMovie[]>, { id: number }>(
-    'moviesSlice/getMovieByCountGenre',
-    async ({id}, {rejectWithValue}) => {
-        try {
-            const {data} = await genreService.getMoviesCountByGenre(id)
-            return data
-
-        } catch (e) {
-            const error = e as AxiosError;
-            return rejectWithValue(error.response?.data)
-        }
-    }
-)
-
 
 const moviesSlice = createSlice({
     name: 'moviesSlice',
@@ -110,9 +94,6 @@ const moviesSlice = createSlice({
             })
             .addCase(getMovieById.fulfilled, (state, action) => {
                 state.movie = action.payload
-            })
-            .addCase(getMovieByCountGenre.fulfilled, (state, action) => {
-                state.movieCountByGenres = action.payload.total_results
             })
             .addMatcher(isFulfilled(getAll, getMovieByTitle,getMoviesByGenre), (state, action) => {
                 state.movies = action.payload
@@ -128,8 +109,7 @@ const movieActions = {
     getAllGenres,
     getMoviesByGenre,
     getMovieByTitle,
-    getMovieById,
-    getMovieByCountGenre
+    getMovieById
 }
 
 export {

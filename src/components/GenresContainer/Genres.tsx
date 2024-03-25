@@ -11,13 +11,13 @@ const Genres = () => {
 
     useEffect(() => {
         dispatch(movieActions.getAllGenres())
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={css.genreContainer}>
             {genres?.genres.map(genre => (
-                <div className={css.navGenreBox} key={genre.id}>
-                    <Genre genre={genre} />
+                <div className={css.navGenreBox}  key={genre.id}>
+                    <Genre genre={genre}/>
                 </div>
             ))}
         </div>

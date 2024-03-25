@@ -33,7 +33,7 @@
     width: 80%;
 }
 
-.navBoxBlack button, .navBoxWhite button {
+.navBoxBlack button{
     text-decoration: none;
     color: white;
     font-size: 25px;
@@ -44,12 +44,15 @@
     cursor: pointer;
 }
 
-.navBoxBlack a, .navBoxWhite a {
+.navBoxWhite button {
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: 25px;
     font-family: "Arial Black", sans-serif;
     margin-right: 15px;
+    background-color: unset;
+    border: none;
+    cursor: pointer;
 }
 
 .userIcon img {

@@ -1,7 +1,7 @@
 import {FC} from "react";
 
 import css from './PostPreview.module.css';
-import posterDefault from '../../images/default_poster.png'
+import posterDefault from '../../assets/images/default_poster.png'
 
 interface IProps {
     poster_path: string,

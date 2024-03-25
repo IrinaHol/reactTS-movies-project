@@ -17,7 +17,7 @@ const StarsRating: FC<IProps> = ({rating}) => {
                 className={css.rating}
                 name="movie-rating"
                 size="small"
-                defaultValue={rate}
+                value={rate}
                 precision={0.5}
                 max={10}
                 readOnly

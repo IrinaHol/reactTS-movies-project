@@ -1,5 +1,5 @@
-import {useEffect} from "react";
-import {useSearchParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 
 import css from './MoviesList.module.css';
 import {PaginationMovies} from "../../Pagination";
@@ -12,22 +12,25 @@ const MoviesList = () => {
     let {movies} = useAppSelector(state => state.movies);
     const {isLoading, errors} = useAppSelector( state => state.loading);
     const {theme} = useAppSelector( state => state.theme);
+    const [page, setPage] = useState(1);
+
     const dispatch = useAppDispatch();
+    const {genreId, search} = useParams();
 
-
-    const [query, setQuery] = useSearchParams({page: '1'});
-    const page = query.get('page');
-
-
-    const handleChange = (value: number): void => {
-        const newParams = new URLSearchParams(query.toString());
-        newParams.set('page', value.toString());
-        setQuery(newParams);
-    }
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
 
     useEffect(() => {
-        dispatch(movieActions.getAll({page}))
-    }, [page]);
+        if (genreId) {
+            dispatch(movieActions.getMoviesByGenre({id: +genreId, page: `${page}`}))
+        } else if (search){
+            dispatch(movieActions.getMovieByTitle({search, page: `${page}`}));
+        } else {
+            dispatch(movieActions.getAll({page: `${page}`}))
+        }
+
+    }, [page, search, genreId, dispatch]);
 
     return (
         <div>
@@ -42,7 +45,7 @@ const MoviesList = () => {
                                                                    rating={movie.vote_average}/>)
                         }
                         </div>
-                        <PaginationMovies count={500} page={+page} onChange={handleChange}/>
+                        <PaginationMovies count={movies?.total_pages <= 500 ? movies?.total_pages : 500} page={+page} onChange={handleChange}/>
                     </div>
                 </div>
         </div>
